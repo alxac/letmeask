@@ -24,13 +24,20 @@ export function Home() {
 
   async function handleJoinRoom(event: FormEvent) {
     event.preventDefault();
+    
     if (roomCode.trim() === "") {
       return;
     }
-
+    
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
+    console.log(roomRef.val().endedAt);
     if (!roomRef.exists()) {
       alert("Room does not exist.");
+      return;
+    }
+
+    if (roomRef.val().endedAt) {
+      alert("Room already closed.");
       return;
     }
 
