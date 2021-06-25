@@ -9,8 +9,8 @@ type QuestionType = {
     avatar: string;
   };
   content: string;
-  isAnswered: string;
-  isHighLighted: string;
+  isAnswered: string | boolean;
+  isHighLighted: string | boolean;
   likeCount: number;
   likeId: string | undefined;
 };
